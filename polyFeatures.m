@@ -15,10 +15,13 @@ X_poly = zeros(numel(X), p);
 %
 % 
 
-
-
-
-
+% For every training example
+    for i = 1:numel(X)
+        % For every polynomial
+            for j = 1:p
+                X_poly(i,j) = X(i).^j;
+            end
+    end
 
 % =========================================================================
 

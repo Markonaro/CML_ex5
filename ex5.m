@@ -117,9 +117,9 @@ xlabel('Number of training examples')
 ylabel('Error')
 axis([0 13 0 150])
 
-fprintf('# Training Examples\tTrain Error\tCross Validation Error\n');
+fprintf('# |Training Examples|\t|Training Error|\t|Cross Validation Error|\n');
 for i = 1:m
-    fprintf('  \t%d\t\t%f\t%f\n', i, error_train(i), error_val(i));
+    fprintf('      \t\t%d\t\t\t\t%f\t\t\t%f\n', i, error_train(i), error_val(i));
 end
 
 fprintf('Program paused. Press enter to continue.\n');
