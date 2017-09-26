@@ -11,10 +11,11 @@ function [lambda_vec, error_train, error_val] = ...
 
 % Selected values of lambda (you should not change this)
 lambda_vec = [0 0.001 0.003 0.01 0.03 0.1 0.3 1 3 10]';
+lenlam = length(lambda_vec);
 
 % You need to return these variables correctly.
-error_train = zeros(length(lambda_vec), 1);
-error_val = zeros(length(lambda_vec), 1);
+error_train = zeros(lenlam, 1);
+error_val = zeros(lenlam, 1);
 
 % ====================== YOUR CODE HERE ======================
 % Instructions: Fill in this function to return training errors in 
@@ -39,14 +40,19 @@ error_val = zeros(length(lambda_vec), 1);
 %
 %
 
-
-
-
-
-
-
-
-
+% Define training sets X and y
+    Xtrain = X(1:length(X), :);
+    ytrain = y(1:length(y));
+    
+for i = 1:lenlam
+    % Isolate present lambda
+        lambda = lambda_vec(i);
+    % Train with each lambda
+        t = trainLinearReg(Xtrain, ytrain, lambda);
+    % Store each error value in their corresponding error vector
+        error_train(i) = linearRegCostFunction(Xtrain, ytrain, t, 0);
+        error_val(i) = linearRegCostFunction(Xval, yval, t, 0);
+end
 
 % =========================================================================
 
